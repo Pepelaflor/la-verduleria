@@ -2,19 +2,25 @@ import React from 'react';
 import './App.css';
 import { Navbar, Nav, Container, NavDropdown} from 'react-bootstrap';
 import NavBar from './components/NavBar';
+import ItemListContainer from './components/ItemListContainer';
+
 
 
 
 function App() {
   return (
     <div className="App">
-      <NavBar/>
       <header className="App-header">
-        <p>
+      <NavBar/>
+      </header>
+       <p>
           Bienvenido a la tienda web de La Verduleria
         </p>
-      </header>
+      <div className='catalogo'>
+        <ItemListContainer/>
+      </div>
     </div>
+
   );
 }
 
