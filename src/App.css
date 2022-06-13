@@ -13,10 +13,37 @@
   }
 }
 
+h2 {
+  padding-top: 50px;
+}
+
 .catalogo {
   display: flex;
   justify-content: center;
   padding-top: 200px;
+}
+
+.itemCatalogo {
+  text-align: center;
+  border: 1px solid black;
+  width: 1fr;
+  height: 150px;
+  margin: 15px;
+  
+}
+
+.stockData {
+  display: inline
+}
+
+.CounterContainer {
+  display: inline;
+}
+
+.BotonCounter {
+  display: inline;
+  height: 25px;
+  margin: 5px;
 }
 
 
