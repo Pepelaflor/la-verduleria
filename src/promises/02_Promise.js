@@ -1,3 +1,9 @@
+import React from "react";
+import ImageComponent from "../components/ImageComponent";
+import LechugaIMG from "../multimedia/lechuga.jpg"
+import Item from "../components/Item";
+
+
 function APICall () {
     return new Promise((resolve) => {
         const data = [
@@ -7,6 +13,7 @@ function APICall () {
                 description: 'Lechuga fresca y natural',
                 precio: 30,
                 stock: 20,
+                foto: <ImageComponent url={LechugaIMG}/>
             },
             {
                 id: '2',
@@ -54,3 +61,5 @@ async function main() {
 main();
 
 console.log('App finalizada');
+
+export default APICall;
