@@ -1,63 +1,43 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import APICall from "../promises/02_Promise";
+import LechugaImg from "../multimedia/lechuga.jpg"
+import ItemList from "./ItemList";
+import ImageComponent from "./ImageComponent";
+import Popup from "./PopUp";
 
-export const data = [
-    {
-        id: '1',
-        name: 'Lechuga',
-        description: 'Lechuga fresca y natural',
-        precio: 30,
-        stock: 20,
-    },
-    {
-        id: '2',
-        name: 'Tomates',
-        description: 'Tomatitos ricos',
-        precio: 80,
-        stock: 10,
-    },
-    {
-        id: '3',
-        name: 'Banana',
-        description: 'Bananas sin arañas',
-        precio: 58,
-        stock: 5,
-    },
-    {
-        id: '4',
-        name: 'Naranja',
-        description: 'No es lo mismo que toronja',
-        precio: 30,
-        stock: 35,
-    },
-    {
-        id: '5',
-        name: 'Toronja',
-        description: 'No es lo mismo que naranja',
-        precio: 45,
-        stock: 15,
-    },
-];
+
 
 function Item (item) {
+    const [isOpen, setIsOpen] = useState(false)
+
+    const togglePopup = () => {
+        setIsOpen(!isOpen);
+    }
+
     return (
         <div>
-        {data.map(item => {
-            return (
-            <div>
-                {item.id}
-                {item.name}
-                {item.description}
-                {item.precio}
-                {item.stock}
-            </div>   
-            )
-        })
-        }
-    </div>
-    );
+            <li key={item.id}>
+            <h3 className="ItemName">{item.name}</h3>
+            
+            <p className="ItemDescription">{item.description}</p>
+            <button onClick={togglePopup}>Mas informacion</button>
+            
+            <p className="ItemStock">Stock: {item.stock} unidades</p>
+            </li>
+            {isOpen && <Popup
+            content={<>
+                <p>{item.foto}</p>
+                <b>{item.name}</b>
+                <p>{item.description}</p>
+                <p>Precio: ${item.precio}</p>
+                <p>Stock: {item.stock} unidades</p>
+                <button>Añadir al carrito</button>
+         </>}
+         handleClose={togglePopup}
+         />}
+        </div>
+        )
 }
 
-export default {
-    data,
-}
+export default Item;
 
